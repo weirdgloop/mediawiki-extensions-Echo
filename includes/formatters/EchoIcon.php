@@ -13,6 +13,7 @@ class EchoIcon {
 			throw new InvalidArgumentException( "The $icon icon is not registered" );
 		}
 
+		$config = ConfigFactory::getDefaultInstance()->makeConfig( 'main' );
 		$iconInfo = $wgEchoNotificationIcons[$icon];
 		$needsPrefixing = true;
 
@@ -43,7 +44,8 @@ class EchoIcon {
 			$iconUrl = "$wgExtensionAssetsPath/$iconUrl";
 		}
 
-		return $iconUrl;
+		// WGL - Change EchoIcon to produce hashed icon URLs.
+		return OutputPage::transformResourcePath( $config, $iconUrl );
 	}
 
 	/**
@@ -59,6 +61,7 @@ class EchoIcon {
 			throw new InvalidArgumentException( "The $icon icon is not registered" );
 		}
 
+		$config = ConfigFactory::getDefaultInstance()->makeConfig( 'main' );
 		$url = $wgEchoNotificationIcons[ $icon ][ 'url' ] ?? null;
 
 		// If the defined URL is explicitly false, use placeholder
@@ -80,7 +83,8 @@ class EchoIcon {
 			$iconUrl = $wgEchoNotificationIcons[ $icon ][ 'url' ];
 		}
 
-		return $iconUrl;
+		// WGL - Change EchoIcon to produce hashed icon URLs.
+		return OutputPage::transformResourcePath( $config, $iconUrl );
 	}
 
 }
