@@ -667,7 +667,6 @@ class EchoHooks implements RecentChange_saveHook {
 			foreach ( $overrides as $prefKey => $value ) {
 				$userOptionsManager->setOption( $user, $prefKey, $value );
 			}
-			$user->saveSettings();
 			EchoEvent::create( [
 				'type' => 'welcome',
 				'agent' => $user,
