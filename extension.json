@@ -332,7 +332,7 @@
 				"mobile/list.js",
 				{
 					"name": "mobile/config.json",
-					"callback": "MediaWiki\\Extension\\Notifications\\Hooks::getConfigVars"
+					"callback": "EchoHooks::getConfigVars"
 				},
 				"mobile/overlay.js",
 				"mobile/NotificationBadge.js",
