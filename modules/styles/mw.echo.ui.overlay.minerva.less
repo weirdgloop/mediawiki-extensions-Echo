@@ -1,12 +1,32 @@
 @import 'mediawiki.ui/variables';
 
 @media all and ( max-width: @width-breakpoint-tablet ) {
-	// On mobile screens position the anchor arrow correctly so it points to the
-	// notifications badge.
-	.mw-echo-ui-overlay .oo-ui-popupWidget-anchor {
-		// Override the inline style.
-		left: auto !important;
-		right: 68px;
+	.mw-echo-ui-overlay {
+		// `!important` rules override the inline styles provides by clippable.
+		.oo-ui-clippableElement-clippable {
+			width: 100% !important;
+		}
+
+		// On mobile screens position the anchor arrow correctly so it points to the
+		// notifications badge.
+		.oo-ui-popupWidget-anchor {
+			// Override the inline style.
+			left: auto !important;
+			right: 68px;
+		}
+
+		.mw-echo-ui-specialHelpMenuWidget-menu {
+			max-width: 70% !important;
+		}
+
+		.oo-ui-popupWidget-popup {
+			width: 100% !important;
+		}
+
+		.mw-echo-ui-notificationBadgeButtonPopupWidget-popup {
+			left: 1px !important;
+			right: 2px;
+		}
 	}
 }
 
