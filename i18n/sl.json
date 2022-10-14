@@ -33,6 +33,7 @@
 	"echo-pref-cross-wiki-notifications": "Prikaži obvestila iz drugih vikijev",
 	"echo-pref-notifications-blacklist": "Ne prikazuj obvestil naslednjih uporabnikov ([[mw:Special:MyLanguage/Help:Notifications#mute|več]]):",
 	"echo-pref-notifications-page-linked-title-muted-list": "Za te strani ne prikazuj obvestil »Povezava na stran« ([[mw:Special:MyLanguage/Help:Notifications#mute|več]]):",
+	"echo-pref-dont-email-read-notifications": "V povzetke obvestil ne vključi prebranih obvestil",
 	"echo-learn-more": "Več o tem",
 	"echo-log": "Dnevnik",
 	"echo-new-messages": "Imaš novo sporočilo na pogovorni strani",
@@ -107,7 +108,7 @@
 	"notification-link-text-expand-alert-count": "Prikaži {{PLURAL:$1|$1 opomnik|$1 opomnika|$1 opomnike|$1 opomnikov}}",
 	"notification-link-text-expand-notice-count": "Prikaži {{PLURAL:$1|$1 obvestilo|$1 obvestili|$1 obvestila|$1 obvestil}}",
 	"notification-link-text-expand-all-count": "Prikaži {{PLURAL:$1|$1 obvestilo|$1 obvestili|$1 obvestila|$1 obvestil}}",
-	"notification-link-text-collapse-all": "Zapri",
+	"notification-link-text-collapse-all": "Strni",
 	"notification-link-text-view-message": "Ogled sporočila",
 	"notification-link-text-view-mention": "Ogled omembe",
 	"notification-link-text-view-mention-failure": "{{PLURAL:$1|Prikaz obvestila|Prikaz obvestil}}",
@@ -199,5 +200,8 @@
 	"notification-header-foreign-alert": "Novi opomniki iz {{PLURAL:$5|drugega wikija|$5 drugih wikijev}}",
 	"notification-header-foreign-notice": "Več obvestil iz {{PLURAL:$5|drugega vikija|$5 drugih vikijev}}",
 	"notification-header-foreign-all": "Več obvestil iz {{PLURAL:$5|drugega vikija|$5 drugih vikijev}}",
-	"group-push-subscription-manager": "Upravljalci potisnih naročil"
+	"right-manage-all-push-subscriptions": "Upravljanje vseh naročil potisnih obvestil",
+	"group-push-subscription-manager": "Upravljavci potisnih naročil",
+	"group-push-subscription-manager-member": "{{GENDER:$1|upravljavec potisnih naročil|upravljavka potisnih naročil/upravljavec/ka potisnih naročil}}",
+	"grouppage-push-subscription-manager": "{{ns:project}}:Upravljavci potisnih naročil"
 }
