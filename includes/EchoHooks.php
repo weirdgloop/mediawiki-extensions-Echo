@@ -1319,6 +1319,11 @@ class EchoHooks implements RecentChange_saveHook {
 			// option changes. This covers both explicit changes in the preferences
 			// and changes made through the options API (since both call this hook).
 			DeferredUpdates::addCallableUpdate( static function () use ( $user ) {
+				if ( !$user->isRegistered() ) {
+					// It's possible the user account was deleted before the deferred
+					// update runs (T318081)
+					return;
+				}
 				MWEchoNotifUser::newFromUser( $user )->resetNotificationCount();
 			} );
 		}
