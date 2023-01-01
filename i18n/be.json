@@ -10,12 +10,13 @@
 			"Чаховіч Уладзіслаў",
 			"Tomato Cream",
 			"Chadyka",
-			"No Sleep till Krupki"
+			"No Sleep till Krupki",
+			"Maksim L."
 		]
 	},
 	"echo-desc": "Сістэма апавяшчэння ўдзельнікаў пра падзеі і паведамленні",
 	"prefs-echo": "Паведамленні",
-	"prefs-emailsettings": "Настройкі эл. пошты",
+	"prefs-emailsettings": "Параметры эл. пошты",
 	"prefs-echosubscriptions": "Паведамляць мне пра гэтыя падзеі",
 	"prefs-echocrosswiki": "Паведамленні з некалькіх вікі-праектаў («крос-вікі»)",
 	"prefs-blocknotificationslist": "Адключаныя ўдзельнікі",
@@ -47,7 +48,7 @@
 	"echo-category-title-article-linked": "{{PLURAL:$1|спасылка|спасылкі}} на старонкі",
 	"echo-category-title-reverted": "{{PLURAL:$1|адмена|адмены}} правак",
 	"echo-category-title-mention": "{{PLURAL:$1|Згадванне|Згадванні}}",
-	"echo-category-title-mention-failure": "{{PLURAL:$1|Наўдалае згадванне|Няўдалыя згадванні}}",
+	"echo-category-title-mention-failure": "{{PLURAL:$1|Няўдалая згадка|Няўдалыя згадкі}}",
 	"echo-category-title-mention-success": "{{PLURAL:$1|Паспяховае згадванне|Паспяховыя згадванні}}",
 	"echo-category-title-other": "{{PLURAL:$1|Іншае|Іншыя}}",
 	"echo-category-title-system": "{{PLURAL:$1|Сістэмнае|Сістэмныя}}",
