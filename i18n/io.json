@@ -45,6 +45,7 @@
 	"notifications": "Avizi",
 	"tooltip-pt-notifications-alert": "{{GENDER:|Vua}} informi",
 	"tooltip-pt-notifications-notice": "{{GENDER:|Vua}} informi",
+	"echo-displaynotificationsconfiguration-enabled-default-new-users-legend": "Nova uzeri",
 	"echo-specialpage": "Avizi",
 	"echo-specialpage-pagination-numnotifications": "$1 {{PLURAL:$1|avizo|avizi}}",
 	"echo-specialpage-pagefilters-title": "Recenta agadi",
@@ -110,5 +111,7 @@
 	"echo-email-batch-subject-weekly": "Vu havas {{PLURAL:$2|nova avizo|nova avizi}} de {{SITENAME}} ca semano",
 	"echo-email-batch-link-text-view-all-notifications": "Montrez omna avizi",
 	"notification-header-foreign-alert": "Plusa avizi de {{PLURAL:$5|altra Wiki|$5 altra Wiki}}",
-	"notification-header-foreign-notice": "Altra avizi de {{PLURAL:$5|altra Wiki|$5 altra Wiki}}"
+	"notification-header-foreign-notice": "Altra avizi de {{PLURAL:$5|altra Wiki|$5 altra Wiki}}",
+	"group-push-subscription-manager": "Jeranti di suskripti ''push''",
+	"grouppage-push-subscription-manager": "{{ns:project}}:Jeranti di suskripti ''push''"
 }
