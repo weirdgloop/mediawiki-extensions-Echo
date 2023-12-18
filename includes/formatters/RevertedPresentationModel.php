@@ -20,7 +20,7 @@ class EchoRevertedPresentationModel extends EchoEventPresentationModel {
 	}
 
 	public function getBodyMessage() {
-		$summary = $this->event->getExtraParam( 'summary' );
+		$summary = $this->event->getExtraParam( 'summary' ) ?? '';
 		if (
 			!$this->isAutomaticSummary( $summary ) &&
 			$this->userCan( RevisionRecord::DELETED_COMMENT )
