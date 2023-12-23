@@ -1,24 +1,25 @@
 <?php
 
+use MediaWiki\Extension\Notifications\Model\Event;
+
 /**
  * @group Echo
  * @group Database
  * @group medium
  */
-class EchoTalkPageFunctionalTest extends ApiTestCase {
-
-	protected function setUp(): void {
-		parent::setUp();
-		$this->db->delete( 'echo_event', '*' );
-	}
+class TalkPageFunctionalTest extends ApiTestCase {
+	/** @inheritDoc */
+	protected $tablesUsed = [ 'echo_event' ];
 
 	/**
 	 * Creates and updates a user talk page a few times to ensure proper events are
-	 * created. The user performing the edits is self::$users['sysop'].
-	 * @covers \EchoDiscussionParser
+	 * created.
+	 * @covers \MediaWiki\Extension\Notifications\DiscussionParser
 	 */
 	public function testAddCommentsToTalkPage() {
-		$talkPage = self::$users['uploader']->getUser()->getName();
+		$editor = $this->getTestSysop()->getUser();
+		$talkTitle = $this->getTestSysop()->getUser()->getTalkPage();
+		$talkPage = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $talkTitle );
 
 		$expectedMessageCount = 0;
 		$this->assertCount( $expectedMessageCount, $this->fetchAllEvents() );
@@ -31,7 +32,7 @@ class EchoTalkPageFunctionalTest extends ApiTestCase {
 			$content,
 			'',
 			NS_USER_TALK,
-			self::$users['sysop']->getUser()
+			$editor
 		);
 
 		// Ensure the proper event was created
@@ -49,7 +50,7 @@ class EchoTalkPageFunctionalTest extends ApiTestCase {
 			$content,
 			'',
 			NS_USER_TALK,
-			self::$users['sysop']->getUser()
+			$editor
 		);
 
 		// Ensure another event was created
@@ -67,7 +68,7 @@ class EchoTalkPageFunctionalTest extends ApiTestCase {
 			$content,
 			'',
 			NS_USER_TALK,
-			self::$users['sysop']->getUser()
+			$editor
 		);
 
 		// Ensure this event has the new section title
@@ -89,7 +90,7 @@ class EchoTalkPageFunctionalTest extends ApiTestCase {
 	 * @return \stdClass[] All talk page edit events in db sorted from oldest to newest
 	 */
 	protected function fetchAllEvents() {
-		$res = $this->db->select( 'echo_event', EchoEvent::selectFields(), [
+		$res = $this->db->select( 'echo_event', Event::selectFields(), [
 				'event_type' => 'edit-user-talk',
 			], __METHOD__, [ 'ORDER BY' => 'event_id ASC' ] );
 

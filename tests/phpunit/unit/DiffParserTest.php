@@ -1,16 +1,18 @@
 <?php
 
+use MediaWiki\Extension\Notifications\DiscussionParser;
+
 /**
- * @covers \EchoDiffParser
+ * @covers \MediaWiki\Extension\Notifications\DiffParser
  * @group Echo
  */
-class EchoDiffParserTest extends MediaWikiUnitTestCase {
+class DiffParserTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provider_getChangeSet
 	 */
 	public function testGetChangeSet( $message, array $expect, $leftText, $rightText ) {
-		$changeSet = EchoDiscussionParser::getMachineReadableDiff( $leftText, $rightText );
+		$changeSet = DiscussionParser::getMachineReadableDiff( $leftText, $rightText );
 		unset( $changeSet['_info'] );
 		$this->assertEquals( $expect, $changeSet, $message );
 	}
@@ -175,29 +177,21 @@ class EchoDiffParserTest extends MediaWikiUnitTestCase {
 	}
 
 	protected static function mockAction( $action, $content, $left, $right = null ) {
-		if ( $right === null ) {
-			$right = $left;
-		}
-
 		return [
 			'action' => $action,
 			'content' => $content,
 			'left-pos' => $left,
-			'right-pos' => $right,
+			'right-pos' => $right ?? $left,
 		];
 	}
 
 	public static function mockChange( $oldContent, $newContent, $left, $right = null ) {
-		if ( $right === null ) {
-			$right = $left;
-		}
-
 		return [
 			'action' => 'change',
 			'old_content' => $oldContent,
 			'new_content' => $newContent,
 			'left-pos' => $left,
-			'right-pos' => $right,
+			'right-pos' => $right ?? $left,
 		];
 	}
 }

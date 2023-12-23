@@ -10,6 +10,7 @@
 	},
 	"echo-desc": "System fir Benotzer iwwer Evenementer a Messagen z'informéieren",
 	"prefs-echo": "Notifikatiounen",
+	"prefs-description-echo": "Wielt, wéi eng Notifikatiounen {{GENDER:|Dir}} kritt a wéi {{GENDER:|Dir}} se kritt.",
 	"prefs-emailsettings": "E-Mail-Astellungen",
 	"prefs-echosubscriptions": "Mech iwwer dës Evenementer informéieren",
 	"prefs-echocrosswiki": "Cross-Wiki Notifikatiounen",

@@ -1,12 +1,25 @@
 <?php
 
+namespace MediaWiki\Extension\Notifications;
+
+use Language;
+use MediaWiki\Extension\Notifications\Formatters\EchoEventFormatter;
+use MediaWiki\Extension\Notifications\Formatters\EchoFlyoutFormatter;
+use MediaWiki\Extension\Notifications\Formatters\EchoModelFormatter;
+use MediaWiki\Extension\Notifications\Formatters\SpecialNotificationsFormatter;
+use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\Extension\Notifications\Model\Notification;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\WikiMap\WikiMap;
+use MWTimestamp;
+use RequestContext;
+use User;
 
 /**
  * Utility class that formats a notification in the format specified
  * @todo Make this a service with DI
  */
-class EchoDataOutputFormatter {
+class DataOutputFormatter {
 
 	/**
 	 * @var string[] type => class
@@ -26,14 +39,14 @@ class EchoDataOutputFormatter {
 	 * so mark it as safe for html and safe to be escaped again.
 	 * @return-taint onlysafefor_htmlnoent
 	 *
-	 * @param EchoNotification $notification
+	 * @param Notification $notification
 	 * @param string|false $format Output format, false to not format any notifications
 	 * @param User $user the target user viewing the notification
 	 * @param Language $lang Language to format the notification in
 	 * @return array|false False if it could not be formatted
 	 */
 	public static function formatOutput(
-		EchoNotification $notification,
+		Notification $notification,
 		$format,
 		User $user,
 		Language $lang
@@ -47,7 +60,7 @@ class EchoDataOutputFormatter {
 
 		$bundledNotifs = $notification->getBundledNotifications();
 		if ( $bundledNotifs ) {
-			$bundledEvents = array_map( static function ( EchoNotification $notif ) {
+			$bundledEvents = array_map( static function ( Notification $notif ) {
 				return $notif->getEvent();
 			}, $bundledNotifs );
 			$event->setBundledEvents( $bundledEvents );
@@ -150,16 +163,16 @@ class EchoDataOutputFormatter {
 			$formatted = self::formatNotification( $event, $user, $format, $lang );
 			if ( $formatted === false ) {
 				// Can't display it, so mark it as read
-				EchoDeferredMarkAsDeletedUpdate::add( $event );
+				DeferredMarkAsDeletedUpdate::add( $event );
 				return false;
 			}
 			$output['*'] = $formatted;
 
 			if ( $notification->getBundledNotifications() &&
-				EchoServices::getInstance()->getAttributeManager()->isBundleExpandable( $event->getType() )
+				Services::getInstance()->getAttributeManager()->isBundleExpandable( $event->getType() )
 			) {
 				$output['bundledNotifications'] = array_values( array_filter( array_map(
-					function ( EchoNotification $notification ) use ( $format, $user, $lang ) {
+					static function ( Notification $notification ) use ( $format, $user, $lang ) {
 						// remove nested notifications to
 						// - ensure they are formatted as single notifications (not bundled)
 						// - prevent further re-entrance on the current notification
@@ -176,13 +189,13 @@ class EchoDataOutputFormatter {
 	}
 
 	/**
-	 * @param EchoEvent $event
+	 * @param Event $event
 	 * @param User $user
 	 * @param string $format
 	 * @param Language $lang
 	 * @return string[]|string|false False if it could not be formatted
 	 */
-	protected static function formatNotification( EchoEvent $event, User $user, $format, $lang ) {
+	protected static function formatNotification( Event $event, User $user, $format, $lang ) {
 		if ( isset( self::$formatters[$format] ) ) {
 			$class = self::$formatters[$format];
 			/** @var EchoEventFormatter $formatter */

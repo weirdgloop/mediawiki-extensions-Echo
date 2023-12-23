@@ -4,6 +4,9 @@
  *
  * @ingroup Maintenance
  */
+
+use MediaWiki\Extension\Notifications\DbFactory;
+
 require_once getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
 	: __DIR__ . '/../../../maintenance/Maintenance.php';
@@ -32,7 +35,7 @@ class RemoveOrphanedEvents extends LoggedUpdateMaintenance {
 
 	public function doDBUpdates() {
 		$startId = 0;
-		$dbFactory = MWEchoDbFactory::newFromDefault();
+		$dbFactory = DbFactory::newFromDefault();
 		$dbr = $dbFactory->getEchoDb( DB_REPLICA );
 		$maxId = (int)$dbr->newSelectQueryBuilder()
 			->select( 'MAX(event_id)' )
@@ -42,7 +45,7 @@ class RemoveOrphanedEvents extends LoggedUpdateMaintenance {
 		$targetsProcessedTotal = 0;
 		while ( $startId < $maxId ) {
 			$startId += $this->getBatchSize() * 1000;
-			list( $eventsProcessed, $targetsProcessed ) = $this->doMajorBatch( $startId );
+			[ $eventsProcessed, $targetsProcessed ] = $this->doMajorBatch( $startId );
 			$eventsProcessedTotal += $eventsProcessed;
 			$targetsProcessedTotal += $targetsProcessed;
 		}
@@ -53,7 +56,7 @@ class RemoveOrphanedEvents extends LoggedUpdateMaintenance {
 	}
 
 	private function doMajorBatch( $maxId ) {
-		$dbFactory = MWEchoDbFactory::newFromDefault();
+		$dbFactory = DbFactory::newFromDefault();
 		$dbw = $dbFactory->getEchoDb( DB_PRIMARY );
 		$dbr = $dbFactory->getEchoDb( DB_REPLICA );
 		$iterator = new BatchRowIterator(
@@ -87,7 +90,7 @@ class RemoveOrphanedEvents extends LoggedUpdateMaintenance {
 			$dbw->delete( 'echo_target_page', [ 'etp_event' => $ids ], __METHOD__ );
 			$targetsProcessed += $dbw->affectedRows();
 			$this->output( "Deleted $eventsProcessed orphaned events and $targetsProcessed target_page rows.\n" );
-			$dbFactory->waitForReplicas();
+			$this->waitForReplication();
 		}
 
 		$this->output( "Removing any remaining orphaned echo_target_page rows with max etp_event of $maxId...\n" );
@@ -116,7 +119,7 @@ class RemoveOrphanedEvents extends LoggedUpdateMaintenance {
 			$dbw->delete( 'echo_target_page', [ 'etp_event' => $ids ], __METHOD__ );
 			$processed += $dbw->affectedRows();
 			$this->output( "Deleted $processed orphaned target_page rows.\n" );
-			$dbFactory->waitForReplicas();
+			$this->waitForReplication();
 		}
 
 		return [ $eventsProcessed, $targetsProcessed + $processed ];

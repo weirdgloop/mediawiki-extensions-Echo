@@ -5,6 +5,8 @@
  * @ingroup Maintenance
  */
 
+use MediaWiki\Extension\Notifications\DbFactory;
+
 require_once getenv( 'MW_INSTALL_PATH' ) !== false
 	? getenv( 'MW_INSTALL_PATH' ) . '/maintenance/Maintenance.php'
 	: __DIR__ . '/../../../maintenance/Maintenance.php';
@@ -28,7 +30,7 @@ class RemoveInvalidNotification extends Maintenance {
 	}
 
 	public function execute() {
-		$lbFactory = MWEchoDbFactory::newFromDefault();
+		$lbFactory = DbFactory::newFromDefault();
 		if ( !$this->invalidEventType ) {
 			$this->output( "There is nothing to process\n" );
 
@@ -79,7 +81,7 @@ class RemoveInvalidNotification extends Maintenance {
 				$this->commitTransaction( $dbw, __METHOD__ );
 
 				$this->output( "processing " . count( $event ) . " invalid events\n" );
-				$lbFactory->waitForReplicas();
+				$this->waitForReplication();
 			}
 
 			// Cleanup is not necessary for
@@ -88,5 +90,5 @@ class RemoveInvalidNotification extends Maintenance {
 	}
 }
 
-$maintClass = RemoveInvalidNotification::class; // Tells it to run the class
+$maintClass = RemoveInvalidNotification::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
