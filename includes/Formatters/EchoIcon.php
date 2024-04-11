@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\Notifications\Formatters;
 
 use InvalidArgumentException;
 use MediaWiki\MediaWikiServices;
+use OutputPage;
 use UnexpectedValueException;
 
 class EchoIcon {
