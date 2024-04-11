@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\Notifications\Formatters;
 
 use InvalidArgumentException;
+use MediaWiki\MediaWikiServices;
 use UnexpectedValueException;
 
 class EchoIcon {
@@ -18,7 +19,7 @@ class EchoIcon {
 			throw new InvalidArgumentException( "The $icon icon is not registered" );
 		}
 
-		$config = ConfigFactory::getDefaultInstance()->makeConfig( 'main' );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$iconInfo = $wgEchoNotificationIcons[$icon];
 		$needsPrefixing = true;
 
@@ -66,7 +67,7 @@ class EchoIcon {
 			throw new InvalidArgumentException( "The $icon icon is not registered" );
 		}
 
-		$config = ConfigFactory::getDefaultInstance()->makeConfig( 'main' );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$url = $wgEchoNotificationIcons[ $icon ][ 'url' ] ?? null;
 
 		// If the defined URL is explicitly false, use placeholder
