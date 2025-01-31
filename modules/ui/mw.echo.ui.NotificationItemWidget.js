@@ -209,6 +209,13 @@ mw.echo.ui.NotificationItemWidget = function MwEchoUiNotificationItemWidget( con
 			.attr( 'href', this.model.getPrimaryUrl() )
 			.on( 'click', this.onPrimaryLinkClick.bind( this ) )
 			.on( 'auxclick', this.onPrimaryLinkAuxclick.bind( this ) );
+
+			// WGL change - if the notification's link is external, handle it differently
+			if ( !this.model.getPrimaryUrl().startsWith( mw.config.get('wgServer') ) ) {
+				this.$element
+					.addClass( 'mw-echo-ui-notificationItemWidget-external' )
+					.attr( 'target', '_blank' );
+			}
 	}
 };
 
@@ -224,6 +231,12 @@ mw.echo.ui.NotificationItemWidget.static.tagName = 'a';
  * @return {boolean} true
  */
 mw.echo.ui.NotificationItemWidget.prototype.onPrimaryLinkClick = function () {
+	// WGL change - if the notification's link is external, handle it differently
+	if ( this.$element.hasClass( 'mw-echo-ui-notificationItemWidget-external' ) ) {
+		this.$element.removeClass( 'mw-echo-ui-notificationItemWidget-initiallyUnseen' );
+		this.markRead( true );
+	}
+
 	return true;
 };
 
