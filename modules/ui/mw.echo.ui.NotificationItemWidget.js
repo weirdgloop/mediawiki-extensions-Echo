@@ -202,6 +202,13 @@
 			this.$element
 				.attr( 'href', this.model.getPrimaryUrl() )
 				.on( 'click', this.onPrimaryLinkClick.bind( this ) );
+
+			// WGL change - if the notification's link is external, handle it differently
+			if ( !this.model.getPrimaryUrl().startsWith( mw.config.get('wgServer') ) ) {
+				this.$element
+					.addClass( 'mw-echo-ui-notificationItemWidget-external' )
+					.attr( 'target', '_blank' );
+			}
 		}
 	};
 
@@ -213,10 +220,16 @@
 	/**
 	 * Respond to primary link click.
 	 * Override this in the descendents.
-	 *
+	 **
 	 * @return {boolean} true
 	 */
-	mw.echo.ui.NotificationItemWidget.prototype.onPrimaryLinkClick = function () {
+	mw.echo.ui.NotificationItemWidget.prototype.onPrimaryLinkClick = function ( ) {
+		// WGL change - if the notification's link is external, handle it differently
+		if ( this.$element.hasClass( 'mw-echo-ui-notificationItemWidget-external' ) ) {
+			this.$element.removeClass( 'mw-echo-ui-notificationItemWidget-initiallyUnseen' );
+			this.markRead( true );
+		}
+
 		return true;
 	};
 
