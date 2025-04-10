@@ -3,7 +3,6 @@
 		"authors": [
 			"AS",
 			"Ahonc",
-			"Amire80",
 			"Andriy.v",
 			"Andriykopanytsia",
 			"Base",
@@ -21,7 +20,8 @@
 			"SteveR",
 			"Vlad5250",
 			"Ата",
-			"Максим Підліснюк"
+			"Максим Підліснюк",
+			"Ignatgg"
 		]
 	},
 	"echo-desc": "Система сповіщення користувачів про події і повідомлення",
@@ -163,7 +163,7 @@
 	"notification-header-mention-agent-talkpage": "$1 згада{{GENDER:$2|в|ла}} {{GENDER:$3|Вас}} на <strong>{{GENDER:$2|своїй}} сторінці обговорення</strong> у «<strong>$4</strong>».",
 	"notification-header-mention-agent-talkpage-nosection": "$1 {{GENDER:$2|згадав|згадала}} {{GENDER:$3|Вас}} на <strong>{{GENDER:$2|своїй}} сторінці обговорення</strong>.",
 	"notification-header-mention-article-talkpage": "$1 згада{{GENDER:$2|в|ла}} {{GENDER:$3|Вас}} на сторінці обговорення <strong>$4</strong> у «<strong>$5</strong>».",
-	"notification-header-mention-article-talkpage-nosection": "$1 згада{{GENDER:$2|в|ла}} {{GENDER:$3|Вас}} на сторінці обговорення <strong>$4</strong> .",
+	"notification-header-mention-article-talkpage-nosection": "$1 згада{{GENDER:$2|в|ла}} {{GENDER:$3|Вас}} на сторінці обговорення <strong>$4</strong>.",
 	"notification-header-mention-failure-user-unknown": "{{GENDER:$2|Вашу}} згадку <strong>$3</strong> не надіслано, бо не знайдено такого користувача.",
 	"notification-header-mention-failure-user-anonymous": "{{GENDER:$2|Вашу}} згадку <strong>$3</strong> не надіслано, бо користувач — анонім.",
 	"notification-header-mention-failure-too-many": "{{GENDER:$2|Ви}} спробували згадати понад $3 {{PLURAL:$3|користувача|користувачі|користувачів}}. Усі згадки вище понад цей ліміт не було надіслано.",
@@ -251,8 +251,8 @@
 	"notification-header-foreign-all": "Більше сповіщень з {{PLURAL:$5|іншої вікі|$5 інших вікі}}",
 	"echo-foreign-wiki-lang": "$1 - $2",
 	"echo-badge-count": "{{PLURAL:$1|$1|100={{formatnum:99}}+}}",
-	"right-manage-all-push-subscriptions": "Керувати всіма push-підписками",
-	"action-manage-all-push-subscriptions": "керувати всіма push-підписками",
+	"right-manage-all-push-subscriptions": "Керування всіма push-підписками",
+	"action-manage-all-push-subscriptions": "керування всіма push-підписками",
 	"group-push-subscription-manager": "Керівники push-підписками",
 	"group-push-subscription-manager-member": "{{GENDER:$1|керівник|керівниця}} push-підписками",
 	"grouppage-push-subscription-manager": "{{ns:project}}:Керівники push-підписками"

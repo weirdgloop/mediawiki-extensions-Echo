@@ -170,7 +170,7 @@
 	"notification-header-user-rights-remove-only": "{{GENDER:$4|Ваша}} корисничка права су {{GENDER:$1|промењена}}. Више нисте члан следећих група: $2.",
 	"notification-header-user-rights-add-and-remove": "{{GENDER:$6|Ваша}} корисничка права су {{GENDER:$1|промењена}}. Додати сте у следеће групе: $2. Више нисте члан следећих група: $4.",
 	"notification-header-user-rights-expiry-change": "Истек {{GENDER:$4|вашег}} чланства у {{PLURAL:$3|следећој групи|следећим групама}} је {{GENDER:$1|промењен}}: $2.",
-	"notification-header-welcome": "{{GENDER:$2|Добро дошли}} на {{GRAMMAR:акузатив|{{SITENAME}}}}, $1! Драго нам што {{GENDER:$2|сте}} овде.",
+	"notification-header-welcome": "{{GENDER:$2|Добро дошли}} на {{GRAMMAR:акузатив|{{SITENAME}}}}, $1! Драго нам је што {{GENDER:$2|сте}} овде.",
 	"notification-header-mention-summary": "$1 {{GENDER:$3|Вас}} је {{GENDER:$2|поменуо|поменула}} у опису измене на страници <strong>$4</strong>.",
 	"notification-header-watchlist-changed": "$1 је {{GENDER:$2|променио|променила}} страницу <strong>$3</strong>, страницу на {{GENDER:$4|вашем}} списку надгледања{{PLURAL:$5||, $5 пута}}.",
 	"notification-header-watchlist-created": "$1 је {{GENDER:$2|направио|направила}} страницу <strong>$3</strong>, страницу на {{GENDER:$4|Вашем}} списку надгледања{{PLURAL:$5||, $5 пута}}.",
@@ -196,7 +196,7 @@
 	"notification-link-text-view-edit": "Прикажи измену",
 	"notification-link-article-reminder": "Прикажи страницу",
 	"notification-header-reverted": "$2 je {{GENDER:$2|опозвао|опозвала}} {{PLURAL:$4|Вашу измену странице <strong>$3</strong>|Ваше измене странице <strong>$3</strong>}}.",
-	"notification-header-emailuser": "$1 Вам {{GENDER:$2|шаље}} имејл.",
+	"notification-header-emailuser": "$1 Вам је {{GENDER:$2|послао|послала}} имејл",
 	"notification-edit-user-page-email-subject": "$1 је {{GENDER:$2|уредио|уредила}} Вашу {{GENDER:$3|корисничку}} страницу на {{SITENAME}}",
 	"notification-edit-talk-page-email-subject2": "$1 {{GENDER:$3|Вам}} је {{GENDER:$2|оставио|оставила}} поруку на {{SITENAME}}",
 	"notification-page-linked-email-subject": "Страница коју {{GENDER:$3|сте}} направили је повезана на {{SITENAME}}",
@@ -240,5 +240,7 @@
 	"notification-header-foreign-alert": "Обавештења са {{PLURAL:$5|другог викија|$5 друга викија|$5 других викија}}",
 	"notification-header-foreign-notice": "Обавештења са {{PLURAL:$5|другог викија|$5 друга викија|$5 других викија}}",
 	"notification-header-foreign-all": "Обавештења са {{PLURAL:$5|другог викија|$5 друга викија|$5 других викија}}",
-	"echo-foreign-wiki-lang": "$1 — $2"
+	"echo-foreign-wiki-lang": "$1 — $2",
+	"group-push-subscription-manager": "Менаџери претплата за обавештења",
+	"group-push-subscription-manager-member": "{{GENDER:$1|менаџер претплата за обавештења}}"
 }
