@@ -52,7 +52,8 @@
 			"Чаховіч Уладзіслаў",
 			"Merrahtar",
 			"Shabe",
-			"Vlad5250"
+			"Vlad5250",
+			"Yurina Tatiana"
 		]
 	},
 	"echo-desc": "Система уведомления участников о событиях и сообщениях",
@@ -278,14 +279,17 @@
 	"notification-header-foreign-alert": "Больше уведомлений из {{PLURAL:$5|другой вики|$5 других вики}}",
 	"notification-header-foreign-notice": "Больше уведомлений из {{PLURAL:$5|другой вики|$5 других вики}}",
 	"notification-header-foreign-all": "Больше уведомлений из {{PLURAL:$5|другой вики|$5 других вики}}",
+	"grant-echo-read-notifications": "Чтение уведомлений",
 	"right-echo-create": "Отправка уведомлений другим участникам",
 	"action-echo-create": "отправка уведомлений другим участникам",
 	"right-echo-read-notifications": "Чтение уведомлений",
+	"action-echo-read-notifications": "чтение уведомлений",
 	"right-manage-all-push-subscriptions": "Управление всеми подписками push-уведомлений",
 	"action-manage-all-push-subscriptions": "управление всеми подписками push-уведомлений",
 	"group-push-subscription-manager": "Управляющие подписками push-уведомлений",
 	"group-push-subscription-manager-member": "{{GENDER:$1|управляющий подписками push-уведомлений|управляющая подписками push-уведомлений}}",
 	"grouppage-push-subscription-manager": "{{ns:project}}:Управляющие подписками push-уведомлений",
 	"notification-subject-email-verify-email-reminder": "Подтвердите {{GENDER:$1|ваш}} адрес электронной почты",
+	"notification-link-text-verify-email-reminder": "Управление настройками эл. почты",
 	"notification-verify-email-reminder-link-label": "Подтвердите эл. почту"
 }
